@@ -32,6 +32,7 @@ const StyledAutocomplete = styled(Autocomplete)`
 `;
 
 const SearchBar = ({ searchData, setter }: { searchData: Array<string>; setter: Function }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(searchData);
 
   console.log('searchData', searchData);

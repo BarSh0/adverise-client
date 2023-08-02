@@ -1,5 +1,4 @@
 import { Stack } from '@mui/material';
-import { isEqual } from 'lodash';
 import { useContext } from 'react';
 import NewAutomationContext from '../../contexts/NewAutomationContext';
 import { StackList } from '../AutomationComponents/styles';

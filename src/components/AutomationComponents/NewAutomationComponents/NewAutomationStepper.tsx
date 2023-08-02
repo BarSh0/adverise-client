@@ -1,18 +1,15 @@
 import { Box, Button, Stack, Step, StepLabel, Stepper, Typography } from '@mui/material';
 import React from 'react';
-import { IAutomation } from '../../../constants/types/automation.types';
-import AutomationContext from '../../../contexts/AutomationsContext';
 import NewAutomationContext from '../../../contexts/NewAutomationContext';
 import LinearWithValueLabel from '../../Common/ProggressBar';
 import AutomationDialogStepOne from './AutomationStepperStepOne';
 import AutomationDialogStepThree from './AutomationStepperStepThree';
 import AutomationDialogStepTwo from './AutomationStepperStepTwo';
-import { toast } from 'react-hot-toast';
 
 const steps = ['Select a Profile', 'Set the properties', 'Create a new automation'];
 
 const NewAutomationStepper = () => {
-  const { setNewAutomation, newAutomation, sendRequest } = React.useContext(NewAutomationContext);
+  const { newAutomation, sendRequest } = React.useContext(NewAutomationContext);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
   const [errorMessage, setErrorMessage] = React.useState('');

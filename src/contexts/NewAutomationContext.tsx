@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { handlePostRequest } from '../utils/api/axios';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { createContext, useEffect, useState } from 'react';
 import { amountOfHoursCalc } from '../utils/Utils';
-import AutomationsContext from './AutomationsContext';
+import { handlePostRequest } from '../utils/api/axios';
 
 export type NewAutomationContextType = {
   [key: string]: any;
@@ -76,11 +76,7 @@ export function NewAutomationProvider({ children }: any) {
       audiences: newAutomation.audience,
     };
 
-    const { message, status } = await handlePostRequest(
-      `/${newAutomation.platform}/${newAutomation.adAccount.id}/campaigns`,
-      newAutomation
-    );
-    // addAutomation(message);
+    await handlePostRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/campaigns`, newAutomation);
   };
 
   return (

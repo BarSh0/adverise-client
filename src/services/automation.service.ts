@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { toast } from 'react-hot-toast';
 import { IAutomation } from '../constants/types/automation.types';
 import axiosInstance, { handleGetRequest, handlePostRequest } from '../utils/api/axios';

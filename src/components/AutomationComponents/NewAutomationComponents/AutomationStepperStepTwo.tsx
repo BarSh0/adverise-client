@@ -8,6 +8,7 @@ import Form from '../../Common/Form';
 const AutomationDialogStepTwo = (setErrorMessage: any) => {
   const { newAutomation, adAccounts } = useContext(NewAutomationContext);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getAudiences = () => {
     if (newAutomation.adAccount) {
       const account = adAccounts.find((account: { name: string }) => account.name === newAutomation.adAccount);

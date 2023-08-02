@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AutomationCard, AutomationListItem, NewAutomationButton } from '../components/AutomationComponents';
 import LinearWithValueLabel from '../components/Common/ProggressBar';
 import SearchBar from '../components/SearchBar';
