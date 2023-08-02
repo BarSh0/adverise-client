@@ -16,6 +16,7 @@ const AuthProvider = ({ children }: any) => {
 
   useEffect(() => {
     verifyAccessToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const verifyAccessToken = async () => {

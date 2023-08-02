@@ -2,7 +2,7 @@ import { Button, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { Stack } from '@mui/system';
 import { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { useMutation, useQueryClient } from 'react-query';
 import { Link } from 'react-router-dom';
 import Bg from '../assets/images/login.jpg';
 import LoginWithFacebook from '../components/LoginWith/LoginWithFacebook';
@@ -11,7 +11,6 @@ import LoginWithTwitter from '../components/LoginWith/LoginWithTwitter';
 import OutLayout from '../layouts/OutLayout';
 import PhotoPageLayout from '../layouts/PhotoPageLayout';
 import { handlePostRequest } from '../utils/api/axios';
-import { useMutation, useQueryClient } from 'react-query';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');

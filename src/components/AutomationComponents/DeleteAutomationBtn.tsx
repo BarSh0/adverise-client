@@ -1,8 +1,7 @@
+import { Button } from '@mui/material';
 import { useMutation, useQueryClient } from 'react-query';
-import { handleDeleteRequest } from '../../utils/api/axios';
 import { IAutomation } from '../../constants/types/automation.types';
-import { Button, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { handleDeleteRequest } from '../../utils/api/axios';
 
 const DeleteAutomationBtn = (automation: IAutomation) => {
   const queryClient = useQueryClient();

@@ -1,8 +1,5 @@
-import { Avatar, Typography } from '@mui/material';
-import React from 'react';
-import colors from '../../style/colors';
+import { Avatar, Stack, Typography } from '@mui/material';
 import { DisableStackListItem, StackListItem } from './styles';
-import { Stack } from '@mui/material';
 
 export type ListItemProps = {
   name: string;

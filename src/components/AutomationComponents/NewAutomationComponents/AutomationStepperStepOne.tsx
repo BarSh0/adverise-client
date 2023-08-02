@@ -10,7 +10,7 @@ export type AutomationDialogStepOneProps = {
 };
 
 const AutomationDialogStepOne = ({ setErrorMessage }: AutomationDialogStepOneProps) => {
-  const { newAutomation, adAccounts, accounts } = React.useContext(NewAutomationContext);
+  const { newAutomation } = React.useContext(NewAutomationContext);
 
   useEffect(() => {
     let error = '';
@@ -22,6 +22,7 @@ const AutomationDialogStepOne = ({ setErrorMessage }: AutomationDialogStepOnePro
       error = 'Please select a page';
     }
     setErrorMessage(error);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newAutomation]);
 
   return (

@@ -82,16 +82,6 @@ const adGroupFields = [
   },
 ];
 
-const audienceFields = [
-  {
-    name: 'targetingValue',
-    label: 'Targeting Value',
-    type: 'text',
-    component: 'TextField',
-    required: true,
-  },
-];
-
 const Form = () => {
   const { newAutomation, insertValue } = useContext(NewAutomationContext);
   const { data: fundingInstruments } = useQuery('twitter-funding-instruments', () =>

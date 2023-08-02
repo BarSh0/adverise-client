@@ -1,16 +1,15 @@
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Avatar, Badge, IconButton, ListItemIcon, Tooltip, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 // import { TwitterAuthContext } from '../../contexts/TwitterAuthContext';
+import Logout from '@mui/icons-material/Logout';
+import Settings from '@mui/icons-material/Settings';
+import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
 import useAuth from '../../hooks/useAuth';
 
 const StyledLink = styled(Link)`

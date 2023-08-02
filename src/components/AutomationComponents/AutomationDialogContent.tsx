@@ -107,11 +107,4 @@ const AutomationDialogContent = (automation: IAutomation) => {
   );
 };
 
-const ActivityContainer = styled(Stack)`
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-  padding: 1rem;
-`;
-
 export default AutomationDialogContent;

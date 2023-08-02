@@ -1,8 +1,6 @@
-import React from 'react';
-import { Stack } from '@mui/material';
-import { Button } from '@mui/material';
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import { Button, Stack, Typography } from '@mui/material';
 import Image from '../../assets/images/success.png';
-import { Typography } from '@mui/material';
 
 const ConnectSuccess = () => {
   const handleCilck = () => {
