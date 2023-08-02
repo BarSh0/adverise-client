@@ -2,7 +2,6 @@ import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import ProtectedRoute from './auth/ProtectedRoute';
-import { TwitterAuthProvider } from './contexts/TwitterAuthContext';
 import { AutomationsProvider } from './contexts/AutomationsContext';
 import {
   AdminPage,
