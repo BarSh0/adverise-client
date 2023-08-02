@@ -2,12 +2,10 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 const URL =
-  process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : 'https://autofleet-challenge.onrender.com/';
-
-console.log(URL);
+  process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : 'https://adverise-bd111b5e5739.herokuapp.com/';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/',
+  baseURL: URL,
   headers: {
     Authorization: localStorage.getItem('token'),
     'Content-Type': 'application/json',
