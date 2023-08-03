@@ -19,6 +19,7 @@ const LoginPage = () => {
 
   const handleLogin = useMutation('user', () => handlePostRequest('auth/login', { email, password }), {
     onSuccess: (res) => {
+      console.log(res.data);
       localStorage.setItem('token', res.data);
       window.location.href = '/';
       queryClient.invalidateQueries('user');

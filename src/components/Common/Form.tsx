@@ -107,7 +107,7 @@ const Form = () => {
 
   return (
     <Stack flexDirection={'row'} gap={'1rem'}>
-      <BasicList title="Campaing" label="Campaing">
+      <BasicList title="Campaign" label="Campaign">
         {campaignFields.map((field) => {
           return (
             <FormControl fullWidth key={field.label}>
@@ -191,7 +191,7 @@ const Form = () => {
           >
             {targetingCriteria?.data.map((option: any) => {
               return (
-                <MenuItem key={option.id} value={option.targeting_value}>
+                <MenuItem key={option.id} value={option}>
                   {option.name}
                 </MenuItem>
               );
