@@ -1,4 +1,4 @@
-import { Avatar, Stack } from '@mui/material';
+import { Avatar, Box, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Container } from '@mui/system';
 
@@ -12,13 +12,16 @@ const StyledSocialAvatar = styled(Avatar)`
   }
 `;
 
-const FilterBar = styled(Stack)`
+const FilterBar = styled(Box)`
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
   background: white;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   position: fixed;
-  width: 75%;
+  gap: 1rem;
+  align-items: center;
   z-index: 4;
 `;
 

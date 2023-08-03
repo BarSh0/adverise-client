@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { amountOfHoursCalc } from '../utils/Utils';
 import { handlePostRequest } from '../utils/api/axios';
+import { useMutation, useQueryClient } from 'react-query';
 
 export type NewAutomationContextType = {
   [key: string]: any;
@@ -39,12 +40,8 @@ type NewAutomationRequestType = {
 const NewAutomationContext = createContext({} as any);
 
 export function NewAutomationProvider({ children }: any) {
+  const queryClient = useQueryClient();
   const [newAutomation, setNewAutomation] = useState({} as NewAutomationContextType);
-  // const { addAutomation } = useContext(AutomationsContext);
-
-  useEffect(() => {
-    console.log(newAutomation);
-  }, [newAutomation]);
 
   const insertValue = (key: string, value: string) => {
     setNewAutomation({ ...newAutomation, [key]: value });
@@ -64,31 +61,26 @@ export function NewAutomationProvider({ children }: any) {
     const newValue = oldValue.filter((item: any) => item !== value);
     setNewAutomation({ ...newAutomation, [key]: newValue });
   };
-  const sendRequest = async () => {
-    const request: NewAutomationRequestType = {
-      accountId: newAutomation.adAccount.id,
-      page: { ...newAutomation.page, platform: newAutomation.platform },
-      properties: {
-        adPauseTime: amountOfHoursCalc(parseInt(newAutomation.amount), newAutomation.of),
-        dailyBudget: parseInt(newAutomation.budget) * 100,
-        objective: 'POST_ENGAGEMENT',
-      },
-      audiences: newAutomation.audience,
-    };
 
-    await handlePostRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/campaigns`, newAutomation);
-  };
+  const postNewAutomation = useMutation(
+    () => handlePostRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/campaigns`, newAutomation),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('automations');
+      },
+    }
+  );
 
   return (
     <NewAutomationContext.Provider
       value={{
         newAutomation,
+        postNewAutomation,
         setNewAutomation,
         insertValue,
         removeValue,
         removeMultipleValues,
         insertMultipleValues,
-        sendRequest,
       }}
     >
       {children}
@@ -97,3 +89,14 @@ export function NewAutomationProvider({ children }: any) {
 }
 
 export default NewAutomationContext;
+
+// const request: NewAutomationRequestType = {
+//   accountId: newAutomation.adAccount.id,
+//   page: { ...newAutomation.page, platform: newAutomation.platform },
+//   properties: {
+//     adPauseTime: amountOfHoursCalc(parseInt(newAutomation.amount), newAutomation.of),
+//     dailyBudget: parseInt(newAutomation.budget) * 100,
+//     objective: 'POST_ENGAGEMENT',
+//   },
+//   audiences: newAutomation.audience,
+// };

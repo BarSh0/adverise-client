@@ -5,16 +5,14 @@ import { automationService } from '../services/automation.service';
 const AutomationsContext = createContext({} as any);
 
 export function AutomationsProvider({ children }: any) {
+  const queryClient = useQueryClient();
   const { data: automationsArray, error, isLoading } = useQuery('automations', automationService.getAllAutomations);
 
-  const queryClient = useQueryClient();
-  // Define the handleStatusChange function with proper parameters
   const handleStatusChange: MutationFunction<void, [string, string, boolean]> = async (variables) => {
     const [automationId, platform, checked] = variables;
     await automationService.handleToggleStatusNew(automationId, platform, !checked);
   };
 
-  // Use useMutation with the mutation function directly
   const changeStatus = useMutation<void, unknown, [string, string, boolean]>(handleStatusChange, {
     onSuccess: () => {
       queryClient.invalidateQueries('automations');

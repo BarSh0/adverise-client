@@ -37,6 +37,7 @@ const AutomationsPage = () => {
   };
 
   const handleChange = (event: React.MouseEvent<HTMLElement>, newAlignment: string) => {
+    if (newAlignment === null) return;
     setDisplayOption(newAlignment as 'list' | 'cards');
   };
 
@@ -45,14 +46,12 @@ const AutomationsPage = () => {
       <AppLayout>
         <StyledContainer>
           {!isLoading && (
-            <FilterBar flexDirection={'row'} justifyContent={'space-between'} alignItems="center">
-              <div style={{ width: 300 }}>
-                <SearchBar
-                  searchData={automationsArray.map((automation: IAutomation) => automation.page?.name || 'No Name')}
-                  setter={setFilterList}
-                />
-              </div>
-              <Stack direction={'row'} gap={3} justifyContent={'center'}>
+            <FilterBar>
+              <SearchBar
+                searchData={automationsArray.map((automation: IAutomation) => automation.page?.name || 'No Name')}
+                setter={setFilterList}
+              />
+              <Stack direction={'row'} gap={{ xs: 1, sm: 2, md: 3 }} justifyContent={'center'}>
                 {platforms.map((platform, index) => (
                   <StyledSocialAvatar
                     key={platform.name + index}
@@ -60,15 +59,21 @@ const AutomationsPage = () => {
                     src={platform.icon}
                     alt={platform.name}
                     sx={{
-                      width: 60,
-                      height: 60,
+                      width: { xs: 30, sm: 45, md: 60 },
+                      height: { xs: 30, sm: 45, md: 60 },
                       opacity: selectedPlatform.includes(platform.name) || selectedPlatform.length === 0 ? 1 : 0.5,
                     }}
                     onClick={() => handleClick(platform.name)}
                   />
                 ))}
               </Stack>
-              <ToggleButtonGroup value={displayOption} exclusive onChange={handleChange} aria-label="display options">
+              <ToggleButtonGroup
+                value={displayOption}
+                exclusive
+                onChange={handleChange}
+                aria-label="display options"
+                sx={{ alignItems: 'center', justifyContent: 'flex-end' }}
+              >
                 <ToggleButton value="list">
                   <ReorderIcon />
                 </ToggleButton>

@@ -15,8 +15,8 @@ const AutomationCard = (automation: IAutomation) => {
   console.log('AutomationCard rendered');
   const isActive = automation.status === 'ACTIVE';
   const isFailed = automation.status === 'FAILED';
-  const backgroundColor = isFailed ? colors.red : isActive ? colors.green : '';
-  const fontColor = isActive ? '#fff' : '#000';
+  const backgroundColor = isFailed ? colors.red : isActive ? colors.green : '#fff';
+  const fontColor = isActive ? colors.green : '#000';
   const [open, setOpen] = React.useState(false);
   const queryClient = useQueryClient();
 
@@ -38,7 +38,10 @@ const AutomationCard = (automation: IAutomation) => {
 
   return (
     <>
-      <StyledCard sx={{ background: backgroundColor }} onClick={(e) => handleOpen(e)}>
+      <StyledCard
+        sx={{ outlineColor: backgroundColor, outlineWidth: '2px', outlineStyle: 'solid' }}
+        onClick={(e) => handleOpen(e)}
+      >
         {changeStatus.isLoading && (
           <Box sx={{ width: '9rem', position: 'absolute' }}>
             <LinearProgress />
@@ -49,7 +52,7 @@ const AutomationCard = (automation: IAutomation) => {
             <Typography color={fontColor} fontWeight={600}>
               {isActive ? 'On' : 'Off'}
             </Typography>
-            <Switch checked={isActive} onChange={(e) => changeStatus.mutateAsync(e)} />
+            <Switch checked={isActive} onChange={(e) => changeStatus.mutateAsync(e)} color="success" />
           </Stack>
           <Stack gap={1}>
             <span>
@@ -69,7 +72,6 @@ const AutomationCard = (automation: IAutomation) => {
             </span>
             <span>
               <Typography
-                color={fontColor}
                 fontWeight={900}
                 sx={{
                   textOverflow: 'ellipsis',
@@ -81,7 +83,6 @@ const AutomationCard = (automation: IAutomation) => {
                 {automation.page.name}
               </Typography>
               <Typography
-                color={fontColor}
                 fontSize={16}
                 fontWeight={600}
                 sx={{
@@ -94,9 +95,7 @@ const AutomationCard = (automation: IAutomation) => {
                 {automation.campaign.name}
               </Typography>
             </span>
-            <Typography color={fontColor} fontSize={12}>
-              Last Event: {timeUtils.getTimeElapsed(automation.lastOperation)}
-            </Typography>
+            <Typography fontSize={12}>Last Event: {timeUtils.getTimeElapsed(automation.lastOperation)}</Typography>
           </Stack>
         </Stack>
       </StyledCard>

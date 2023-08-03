@@ -55,6 +55,7 @@ const SearchBar = ({ searchData, setter }: { searchData: Array<string>; setter: 
         options={data}
         renderInput={(params) => <TextField {...params} label="Search" />}
         onInputChange={(event, value) => filterData(value)}
+        fullWidth
       />
     </Stack>
   );

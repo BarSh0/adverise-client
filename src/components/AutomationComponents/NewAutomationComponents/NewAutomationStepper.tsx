@@ -9,7 +9,7 @@ import AutomationDialogStepTwo from './AutomationStepperStepTwo';
 const steps = ['Select a Profile', 'Set the properties', 'Create a new automation'];
 
 const NewAutomationStepper = () => {
-  const { newAutomation, sendRequest } = React.useContext(NewAutomationContext);
+  const { newAutomation, postNewAutomation } = React.useContext(NewAutomationContext);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
   const [errorMessage, setErrorMessage] = React.useState('');
@@ -66,7 +66,7 @@ const NewAutomationStepper = () => {
       return;
     }
     handleNext();
-    sendRequest();
+    postNewAutomation.mutate();
   };
   return (
     <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
