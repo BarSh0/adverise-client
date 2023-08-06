@@ -14,7 +14,6 @@ const StyledImg = styled.img`
 const PhotoPageLayout = ({ children, background }: any) => {
   const [show, setShow] = React.useState(window.innerWidth < 400);
   window.addEventListener('resize', () => {
-    console.log(window.innerWidth);
     setShow(window.innerWidth < 700);
   });
   return (

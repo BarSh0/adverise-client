@@ -39,13 +39,13 @@ const Navbar = () => {
       </StyledLink>
       <Stack flexDirection={'row-reverse'} alignItems="center" justifyContent="space-evenly" gap={3}>
         {routes.map((route) => (
-          <>
-            <StyledLink key={route.name} to={route.path}>
+          <span key={route.name}>
+            <StyledLink to={route.path}>
               {route.icon}
               {route.name}
             </StyledLink>
             <Divider orientation="vertical" flexItem sx={{ borderColor: 'white' }} />
-          </>
+          </span>
         ))}
       </Stack>
       <UserAvatar />

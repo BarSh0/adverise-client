@@ -25,14 +25,13 @@ export function AutomationsProvider({ children }: any) {
 
   const value = {
     changeStatus,
-    isLoading,
     automationsArray,
   };
 
   if (error) console.log(error);
 
   // Return the context provider with the value
-  return <AutomationsContext.Provider value={value}>{children}</AutomationsContext.Provider>;
+  return <AutomationsContext.Provider value={value}>{!isLoading && children}</AutomationsContext.Provider>;
 }
 
 export default AutomationsContext;

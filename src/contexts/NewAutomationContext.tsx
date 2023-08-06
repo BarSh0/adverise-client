@@ -89,14 +89,3 @@ export function NewAutomationProvider({ children }: any) {
 }
 
 export default NewAutomationContext;
-
-// const request: NewAutomationRequestType = {
-//   accountId: newAutomation.adAccount.id,
-//   page: { ...newAutomation.page, platform: newAutomation.platform },
-//   properties: {
-//     adPauseTime: amountOfHoursCalc(parseInt(newAutomation.amount), newAutomation.of),
-//     dailyBudget: parseInt(newAutomation.budget) * 100,
-//     objective: 'POST_ENGAGEMENT',
-//   },
-//   audiences: newAutomation.audience,
-// };

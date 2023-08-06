@@ -19,10 +19,10 @@ const ConnectionsPage = () => {
             Please Choose the social networks that you want to integrate
           </Typography>
           {platforms.map((platform, index) => (
-            <>
-              <PlatformConnect key={platform.name + index} {...platform} />
+            <span key={platform.name + index}>
+              <PlatformConnect {...platform} />
               {index !== platforms.length - 1 && <Divider />}
-            </>
+            </span>
           ))}
         </Stack>
       </PhotoPageLayout>

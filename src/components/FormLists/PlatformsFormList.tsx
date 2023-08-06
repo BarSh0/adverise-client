@@ -10,6 +10,8 @@ const PlatformsFormList = () => {
   const { newAutomation, insertValue, removeValue } = useContext(NewAutomationContext);
   const { user } = useAuth();
 
+  console.log(user);
+
   return (
     <BasicList title="platforms" label="platform">
       {platforms.map((platform, index) => {
@@ -17,7 +19,7 @@ const PlatformsFormList = () => {
         const isConnect = user?.platforms[platformName] ? user?.platforms[platformName].isConnect : false;
         return (
           <BasicListItem
-            key={platform.name + index}
+            key={platform.name}
             name={platform.name}
             icon={platform.icon}
             isDisabled={!isConnect}

@@ -1,8 +1,32 @@
-import { MenuItem, TextField } from '@mui/material';
+import { FormControl, FormLabel, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react';
 import NewAutomationContext from '../../../contexts/NewAutomationContext';
 import currencies from '../../../data/currencies';
 import BasicList from '../../Common/BasicList';
+
+const options = [
+  'APP_INSTALLS',
+  'BRAND_AWARENESS',
+  'CONVERSIONS',
+  'EVENT_RESPONSES',
+  'LEAD_GENERATION',
+  'LINK_CLICKS',
+  'LOCAL_AWARENESS',
+  'MESSAGES',
+  'OFFER_CLAIMS',
+  'OUTCOME_APP_PROMOTION',
+  'OUTCOME_AWARENESS',
+  'OUTCOME_ENGAGEMENT',
+  'OUTCOME_LEADS',
+  'OUTCOME_SALES',
+  'OUTCOME_TRAFFIC',
+  'PAGE_LIKES',
+  'POST_ENGAGEMENT',
+  'PRODUCT_CATALOG_SALES',
+  'REACH',
+  'STORE_VISITS',
+  'VIDEO_VIEWS',
+];
 
 const NewAutomationForm = () => {
   const { newAutomation, insertValue } = React.useContext(NewAutomationContext);
@@ -27,6 +51,7 @@ const NewAutomationForm = () => {
       </TextField>
       <TextField
         label="Budget"
+        type="number"
         value={newAutomation.budget}
         onChange={(e) => {
           insertValue('budget', e.target.value);
@@ -43,7 +68,6 @@ const NewAutomationForm = () => {
         id="outlined-select-currency"
         select
         label="of"
-        defaultValue="hours"
         helperText="Please select your currency"
         value={newAutomation.of}
         onChange={(e) => {
@@ -63,6 +87,24 @@ const NewAutomationForm = () => {
           Months
         </MenuItem>
       </TextField>
+      <FormControl>
+        <FormLabel sx={{ marginBottom: '0.5rem' }}>Objective</FormLabel>
+        <Select
+          name={'objective'}
+          fullWidth
+          defaultValue={newAutomation['objective'] || ''}
+          size="small"
+          onChange={(e) => insertValue('objective', e.target.value)}
+        >
+          {options.map((option: any) => {
+            return (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            );
+          })}
+        </Select>
+      </FormControl>
     </BasicList>
   );
 };

@@ -13,6 +13,7 @@ type AdAccount = {
 };
 type Account = {
   pageId: string;
+  user_id: string;
   name: string;
   picture: string;
 };
@@ -56,14 +57,14 @@ const PagesFormList = () => {
   };
 
   return (
-    <BasicList title="pages" label="page" >
+    <BasicList title="pages" label="page">
       {newAutomation.platform
         ? newAutomation.adAccount
           ? accountsCache[newAutomation.adAccount.name] &&
             accountsCache[newAutomation.adAccount.name].map((account: Account) => {
               return (
                 <BasicListItem
-                  key={account.pageId}
+                  key={account.user_id}
                   name={account.name}
                   isSelected={isEqual(newAutomation.page, account)}
                   icon={account.picture}
