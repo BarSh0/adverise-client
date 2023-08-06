@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack } from '@mui/material';
+import { Avatar, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Container } from '@mui/system';
 
@@ -32,4 +32,4 @@ const StyledContainer = styled(Container)`
   align-items: center;
 `;
 
-export { StyledSocialAvatar, FilterBar, StyledContainer };
+export { FilterBar, StyledContainer, StyledSocialAvatar };

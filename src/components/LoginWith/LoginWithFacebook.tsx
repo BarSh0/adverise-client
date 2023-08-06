@@ -1,12 +1,12 @@
-import { useMutation, useQueryClient } from 'react-query';
+// import { useMutation, useQueryClient } from 'react-query';
 import facebookSettings from '../../data/Platforms/facebook';
 import { StyledSocialAvatar } from '../../pages/styles';
 import { FacebookAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../config/firebase';
-import { handlePostRequest } from '../../utils/api/axios';
+// import { handlePostRequest } from '../../utils/api/axios';
 
 const LoginWithFacebook = () => {
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const signInWithFacebook = async () => {
     const provider = new FacebookAuthProvider();
@@ -14,6 +14,7 @@ const LoginWithFacebook = () => {
 
     const cred = FacebookAuthProvider.credentialFromResult(result);
     const user = result.user;
+    console.log(cred, user);
     // return await handlePostRequest('facebook/signin', { ...user, ...cred });
   };
 
