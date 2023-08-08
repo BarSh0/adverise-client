@@ -9,7 +9,6 @@ const twitterSettings = {
   name: 'twitter',
   icon: Twitter,
   url: 'https://www.twitter.com/',
-  isConnected: false,
   connect: connectToTwitter,
   disconnect: disconnectFromTwitter,
   signIn: signInWithTwitter,
