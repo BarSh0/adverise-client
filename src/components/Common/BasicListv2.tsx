@@ -13,9 +13,10 @@ type BasicListProps = {
   children?: any;
   isMultySelect?: boolean;
   searcher?: boolean;
+  bg?: boolean;
 };
 
-const BasicList = ({ title, label, items, isMultySelect, children, searcher }: BasicListProps) => {
+const BasicList = ({ title, label, items, isMultySelect, children, searcher, bg }: BasicListProps) => {
   const [filteredItems, setFilteredItems] = useState([]);
 
   const { newAutomation, insertValue, removeValue, insertMultipleValues, removeMultipleValues } =
@@ -36,10 +37,12 @@ const BasicList = ({ title, label, items, isMultySelect, children, searcher }: B
     removeMultipleValues(label!, data);
   };
 
+  const background = bg ? 'linear-gradient(180deg, #3e3d4514 51.56%, rgba(0, 0, 0, 0) 100%)' : 'none';
+
   return (
     <Stack gap={2}>
       <BasicListLabel>{title}</BasicListLabel>
-      <StackList>
+      <StackList sx={{ background: background }}>
         {items
           ?.filter((item) => filteredItems.includes(item.name as never))
           .map((item, index) => {

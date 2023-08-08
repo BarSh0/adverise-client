@@ -13,10 +13,11 @@ import { SmallAvatar, StyledAvatar, StyledCard } from './styles';
 
 const AutomationCard = (automation: IAutomation) => {
   console.log('AutomationCard rendered');
+  console.log(automation);
   const isActive = automation.status === 'ACTIVE';
   const isFailed = automation.status === 'FAILED';
   const backgroundColor = isFailed ? colors.red : isActive ? colors.green : '#fff';
-  const fontColor = isActive ? colors.green : '#000';
+  const fontColor = isFailed ? colors.red : isActive ? colors.green : '#000';
   const [open, setOpen] = React.useState(false);
   const queryClient = useQueryClient();
 
@@ -50,7 +51,7 @@ const AutomationCard = (automation: IAutomation) => {
         <Stack gap={5} marginTop={'1rem'}>
           <Stack flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
             <Typography color={fontColor} fontWeight={600}>
-              {isActive ? 'On' : 'Off'}
+              {automation.status}
             </Typography>
             <Switch checked={isActive} onChange={(e) => changeStatus.mutateAsync(e)} color="success" />
           </Stack>

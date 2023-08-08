@@ -6,12 +6,13 @@ import PlatformConnect from '../components/PlatformConnect/PlatformConnect';
 import platforms from '../data/Platforms';
 import AppLayout from '../layouts/AppLayout';
 import PhotoPageLayout from '../layouts/PhotoPageLayout';
+import React from 'react';
 
 const ConnectionsPage = () => {
   return (
     <AppLayout>
       <PhotoPageLayout background={Bg}>
-        <Stack width={'50%'} spacing={{ xs: 2, sm: 3, md: 4 }} paddingX={{ sm: 5, md: 10 }}>
+        <Stack spacing={{ xs: 2, sm: 3, md: 4 }} paddingX={{ sm: 5, md: 10 }}>
           <Typography fontWeight={900} fontSize={30} textAlign="center">
             Social Networks
           </Typography>
@@ -19,10 +20,10 @@ const ConnectionsPage = () => {
             Please Choose the social networks that you want to integrate
           </Typography>
           {platforms.map((platform, index) => (
-            <span key={platform.name + index}>
+            <React.Fragment key={platform.name}>
               <PlatformConnect {...platform} />
               {index !== platforms.length - 1 && <Divider />}
-            </span>
+            </React.Fragment>
           ))}
         </Stack>
       </PhotoPageLayout>

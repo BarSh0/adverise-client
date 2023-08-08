@@ -1,6 +1,16 @@
 import { useQuery } from 'react-query';
 import axiosInstance from '../utils/api/axios';
 
+export type PlatformName = 'facebook' | 'twitter' | 'instagram' | 'linkedin' | 'tiktok';
+
+export type Platforms = Record<PlatformName, Platform>;
+
+export type Platform = {
+  isConnect: boolean;
+  accessToken: string;
+  secretToken: string;
+};
+
 export interface IUser {
   _id: string;
   username: string;
@@ -8,42 +18,13 @@ export interface IUser {
   picture: string;
   createdAt: string;
   updatedAt: string;
-  platforms: {
-    facebook: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-    instagram: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-    twitter: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-    linkedin: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-    tiktok: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-    google: {
-      isConnect: boolean;
-      accessToken: string;
-      secretToken: string;
-    };
-  };
+  platforms: Platforms;
 }
 
 const fetchUserDetails = async (): Promise<IUser | null> => {
   try {
+    // const accessToken = localStorage.getItem('token');
+    // if (!accessToken) return null;
     const response = await axiosInstance.get<IUser>('/users/me');
     return response.data;
   } catch (error) {

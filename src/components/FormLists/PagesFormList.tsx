@@ -47,7 +47,7 @@ const PagesFormList = () => {
 
     // Otherwise, fetch adAccounts data from server
     const id = adAccount.id;
-    const { data } = await handleGetRequest(`/${platform}/${id}/accounts`);
+    const data = await handleGetRequest(`/${platform}/${id}/accounts`);
 
     console.log(`Fetched accounts data for ${adAccount}:`, data);
 
@@ -57,7 +57,7 @@ const PagesFormList = () => {
   };
 
   return (
-    <BasicList title="pages" label="page">
+    <BasicList title="pages" label="page" bg>
       {newAutomation.platform
         ? newAutomation.adAccount
           ? accountsCache[newAutomation.adAccount.name] &&

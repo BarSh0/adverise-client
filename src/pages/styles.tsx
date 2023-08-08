@@ -19,6 +19,7 @@ const FilterBar = styled(Box)`
   background: white;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  width: 80%;
   position: fixed;
   gap: 1rem;
   align-items: center;

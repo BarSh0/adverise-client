@@ -27,9 +27,10 @@ const handlePostRequest = async (url: string, data: any) => {
 const handleGetRequest = async (url: string, data?: any) => {
   try {
     const res = await axiosInstance.get(url, data);
-    return { data: res.data, status: res.status };
+    return res.data.data;
   } catch (error: any) {
     console.log(error.response.data.message);
+    toast.error(error.response.data.message);
     return { message: error.response.data.message, status: error.response.status };
   }
 };

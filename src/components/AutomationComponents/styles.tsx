@@ -77,7 +77,6 @@ const StackList = styled(Stack)`
   width: 15rem;
   justify-content: flex-start;
   gap: 0.5rem;
-  background: linear-gradient(180deg, #3e3d4514 51.56%, rgba(0, 0, 0, 0) 100%);
 `;
 
 export {

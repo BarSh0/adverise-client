@@ -101,12 +101,7 @@ const AutomationsPage = () => {
               </ToggleButton>
             </ToggleButtonGroup>
           </FilterBar>
-          <Stack
-            flexDirection={displayOption === 'list' ? 'column' : 'row'}
-            gap={2}
-            flexWrap="wrap"
-            marginTop={12}
-          >
+          <Stack flexDirection={displayOption === 'list' ? 'column' : 'row'} gap={2} flexWrap="wrap" marginTop={12}>
             <NewAutomationButton diplayOpt={displayOption} />
             {renderAutomations()}
           </Stack>

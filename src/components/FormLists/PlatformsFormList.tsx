@@ -13,7 +13,7 @@ const PlatformsFormList = () => {
   console.log(user);
 
   return (
-    <BasicList title="platforms" label="platform">
+    <BasicList title="platforms" label="platform" bg>
       {platforms.map((platform, index) => {
         const platformName = platform.name as keyof IUser['platforms'];
         const isConnect = user?.platforms[platformName] ? user?.platforms[platformName].isConnect : false;

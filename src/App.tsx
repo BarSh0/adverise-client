@@ -21,7 +21,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        {/* <TwitterAuthProvider> */}
         <Toaster position="bottom-center" />
         <BrowserRouter>
           <Routes>
@@ -43,7 +42,6 @@ const App = () => {
             <Route path="/signup" element={<SignUpPage />} />
           </Routes>
         </BrowserRouter>
-        {/* </TwitterAuthProvider> */}
       </AuthProvider>
     </QueryClientProvider>
   );

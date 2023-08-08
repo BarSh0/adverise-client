@@ -20,7 +20,7 @@ const AudiencesFormList = () => {
   };
 
   return (
-    <BasicList title="audience" label="audience" isMultySelect={true} searcher>
+    <BasicList title="audience" label="audience" isMultySelect={true} searcher bg>
       {newAutomation.adAccount ? (
         newAutomation.adAccount.saved_audiences ? (
           newAutomation.adAccount.saved_audiences?.data.map((audience: any, index: number) => {

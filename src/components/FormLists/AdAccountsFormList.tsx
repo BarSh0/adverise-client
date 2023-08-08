@@ -1,6 +1,5 @@
 import { isEqual } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import NewAutomationContext from '../../contexts/NewAutomationContext';
 import { handleGetRequest } from '../../utils/api/axios';
 import BasicListItem from '../Common/BasicListItemv2';
@@ -24,12 +23,10 @@ const AdAccountsFormList = () => {
       return cachedData;
     }
 
-    const { data, message, status } = await handleGetRequest(`/${platform}/adaccounts`);
+    const data = await handleGetRequest(`/${platform}/adaccounts`);
     console.log(`Fetched adAccounts data for ${platform}:`, data);
 
     if (!data) {
-      console.log(`Failed to fetch adAccounts data for ${platform}:`, { message, status });
-      toast.error(`Failed to fetch adAccounts data for ${platform}: \n\n ${message}`);
       setNewAutomation({ ...newAutomation, platform: '' });
       return;
     }
@@ -53,7 +50,7 @@ const AdAccountsFormList = () => {
   };
 
   return (
-    <BasicList title="ad accounts" label="adAccount" items={adAccounts}>
+    <BasicList title="ad accounts" label="adAccount" items={adAccounts} bg>
       {newAutomation.platform
         ? adAccounts
             .filter((account: { platform: any }) => account.platform === newAutomation.platform)

@@ -2,7 +2,7 @@ import { FormControl, FormLabel, MenuItem, Select, TextField } from '@mui/materi
 import React from 'react';
 import NewAutomationContext from '../../../contexts/NewAutomationContext';
 import currencies from '../../../data/currencies';
-import BasicList from '../../Common/BasicList';
+import BasicList from '../../Common/BasicListv2';
 
 const options = [
   'APP_INSTALLS',
@@ -31,13 +31,13 @@ const options = [
 const NewAutomationForm = () => {
   const { newAutomation, insertValue } = React.useContext(NewAutomationContext);
   return (
-    <BasicList title="properties" items={null}>
+    <BasicList title="properties">
       <TextField
         id="outlined-select-currency"
         select
         label="Currency"
+        size="small"
         defaultValue="USD"
-        helperText="Please select your currency"
         value={newAutomation.currency}
         onChange={(e) => {
           insertValue('currency', e.target.value);
@@ -52,6 +52,7 @@ const NewAutomationForm = () => {
       <TextField
         label="Budget"
         type="number"
+        size="small"
         value={newAutomation.budget}
         onChange={(e) => {
           insertValue('budget', e.target.value);
@@ -60,6 +61,7 @@ const NewAutomationForm = () => {
       <TextField
         label="Amount"
         value={newAutomation.amount}
+        size="small"
         onChange={(e) => {
           insertValue('amount', e.target.value);
         }}
@@ -68,7 +70,7 @@ const NewAutomationForm = () => {
         id="outlined-select-currency"
         select
         label="of"
-        helperText="Please select your currency"
+        size="small"
         value={newAutomation.of}
         onChange={(e) => {
           insertValue('of', e.target.value);
