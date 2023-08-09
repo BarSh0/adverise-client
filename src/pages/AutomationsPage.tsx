@@ -9,8 +9,9 @@ import { IAutomation } from '../constants/types/automation.types';
 import AutomationsContext from '../contexts/AutomationsContext';
 import { NewAutomationProvider } from '../contexts/NewAutomationContext';
 import platforms from '../data/Platforms';
-import AppLayout from '../layouts/AppLayout';
 import { FilterBar, StyledContainer, StyledSocialAvatar } from './styles';
+import React from 'react';
+import { styled } from '@mui/material/styles';
 
 const AutomationsPage = () => {
   console.log('AutomationsPage rendered');
@@ -50,7 +51,16 @@ const AutomationsPage = () => {
       ));
     } else if (displayOption === 'cards') {
       return filteredAutomations.map((automation: IAutomation) => (
-        <AutomationCard key={automation._id} {...automation} />
+        <React.Fragment>
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+          <AutomationCard key={automation._id} {...automation} />
+        </React.Fragment>
       ));
     }
     return null;
@@ -63,52 +73,61 @@ const AutomationsPage = () => {
 
   return (
     <NewAutomationProvider>
-      <AppLayout>
-        <StyledContainer>
-          <FilterBar>
-            <SearchBar
-              searchData={automationsArray.map((automation: IAutomation) => automation.page?.name || 'No Name')}
-              setter={setFilterList}
+      <FilterBar>
+        <SearchBar
+          searchData={automationsArray.map((automation: IAutomation) => automation.page?.name || 'No Name')}
+          setter={setFilterList}
+        />
+        <Stack direction={'row'} gap={{ xs: 1, sm: 2, md: 3 }} justifyContent={'center'}>
+          {platforms.map((platform, index) => (
+            <StyledSocialAvatar
+              key={platform.name + index}
+              variant="rounded"
+              src={platform.icon}
+              alt={platform.name}
+              sx={{
+                width: { xs: 30, sm: 45, md: 60 },
+                height: { xs: 30, sm: 45, md: 60 },
+                opacity: selectedPlatform.includes(platform.name) || selectedPlatform.length === 0 ? 1 : 0.5,
+              }}
+              onClick={() => handleClick(platform.name)}
             />
-            <Stack direction={'row'} gap={{ xs: 1, sm: 2, md: 3 }} justifyContent={'center'}>
-              {platforms.map((platform, index) => (
-                <StyledSocialAvatar
-                  key={platform.name + index}
-                  variant="rounded"
-                  src={platform.icon}
-                  alt={platform.name}
-                  sx={{
-                    width: { xs: 30, sm: 45, md: 60 },
-                    height: { xs: 30, sm: 45, md: 60 },
-                    opacity: selectedPlatform.includes(platform.name) || selectedPlatform.length === 0 ? 1 : 0.5,
-                  }}
-                  onClick={() => handleClick(platform.name)}
-                />
-              ))}
-            </Stack>
-            <ToggleButtonGroup
-              value={displayOption}
-              exclusive
-              onChange={handleChange}
-              aria-label="display options"
-              sx={{ alignItems: 'center', justifyContent: 'flex-end' }}
-            >
-              <ToggleButton value="list">
-                <ReorderIcon />
-              </ToggleButton>
-              <ToggleButton value="cards">
-                <DashboardCustomizeIcon />
-              </ToggleButton>
-            </ToggleButtonGroup>
-          </FilterBar>
-          <Stack flexDirection={displayOption === 'list' ? 'column' : 'row'} gap={2} flexWrap="wrap" marginTop={12}>
-            <NewAutomationButton diplayOpt={displayOption} />
-            {renderAutomations()}
-          </Stack>
-        </StyledContainer>
-      </AppLayout>
+          ))}
+        </Stack>
+        <ToggleButtonGroup
+          value={displayOption}
+          exclusive
+          onChange={handleChange}
+          aria-label="display options"
+          sx={{ alignItems: 'center', justifyContent: 'flex-end' }}
+        >
+          <ToggleButton value="list">
+            <ReorderIcon />
+          </ToggleButton>
+          <ToggleButton value="cards">
+            <DashboardCustomizeIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </FilterBar>
+      <AutomationsStack flexDirection={displayOption === 'list' ? 'column' : 'row'}>
+        <NewAutomationButton diplayOpt={displayOption} />
+        {renderAutomations()}
+      </AutomationsStack>
     </NewAutomationProvider>
   );
 };
+
+const AutomationsStack = styled(Stack)`
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: inset 0 5px 10px -10px black;
+  background: linear-gradient(180deg, #3e3d4514 51.56%, rgba(0, 0, 0, 0) 100%);
+  padding: 1rem;
+  margin-top: 10px;
+  height: 70vh;
+  overflow: auto;
+  border-radius: 0.5rem;
+`;
 
 export default AutomationsPage;

@@ -1,10 +1,8 @@
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Avatar, Badge, IconButton, ListItemIcon, Tooltip, Typography } from '@mui/material';
+import { Avatar, IconButton, ListItemIcon, Tooltip, Typography } from '@mui/material';
 import { Stack } from '@mui/system';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-// import { TwitterAuthContext } from '../../contexts/TwitterAuthContext';
 import Logout from '@mui/icons-material/Logout';
 import Settings from '@mui/icons-material/Settings';
 import Divider from '@mui/material/Divider';
@@ -16,6 +14,14 @@ const StyledLink = styled(Link)`
   all: unset;
   font-size: 3rem;
   cursor: pointer;
+`;
+
+const UserStack = styled(Stack)`
+  background: #f0f3f4;
+  border-radius: 0.5rem;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 2rem;
 `;
 
 const UserAvatar = () => {
@@ -36,16 +42,20 @@ const UserAvatar = () => {
   };
 
   return (
-    <Stack flexDirection={'row'} alignItems="center" gap={2}>
+    <UserStack>
       <Tooltip title="User Profile" arrow>
         <IconButton
           onClick={handleClick}
-          size="small"
           aria-controls={open ? 'account-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
-          <Avatar alt="Bar Shoshani" src={user?.picture} variant="rounded" sx={{ width: 65, height: 65 }} />
+          <Avatar
+            alt="Bar Shoshani"
+            src={user?.picture}
+            variant="rounded"
+            sx={{ width: 65, height: 65, borderRadius: '.5rem' }}
+          />
         </IconButton>
       </Tooltip>
       <Menu
@@ -108,12 +118,7 @@ const UserAvatar = () => {
         </StyledLink>
         <Typography fontSize={12}> CEO / Co-Founder </Typography>
       </Stack>
-      <IconButton aria-label="settings" sx={{ color: 'white' }}>
-        <Badge badgeContent={4} color="error">
-          <NotificationsIcon />
-        </Badge>
-      </IconButton>
-    </Stack>
+    </UserStack>
   );
 };
 

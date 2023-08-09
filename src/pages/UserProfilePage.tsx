@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import user from '../data/user';
-import AppLayout from '../layouts/AppLayout';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -36,18 +35,16 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const UserProfilePage = () => {
   return (
-    <AppLayout>
-      <Box padding={'1rem'}>
-        {JSON.stringify(user)}
-        {/* 
+    <Box padding={'1rem'}>
+      {JSON.stringify(user)}
+      {/* 
       <div>a</div>
       <div>a </div>
       <div>a </div>
       <StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot">
       <Avatar alt="Remy Sharp" variant="rounded" />
     </StyledBadge> */}
-      </Box>
-    </AppLayout>
+    </Box>
   );
 };
 

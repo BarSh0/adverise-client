@@ -1,13 +1,27 @@
-import { Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import { styled } from '@mui/material/styles';
 import { Stack } from '@mui/system';
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Bg from '../assets/images/login.jpg';
-import OutLayout from '../layouts/OutLayout';
-import PhotoPageLayout from '../layouts/PhotoPageLayout';
-import { handlePostRequest } from '../utils/api/axios';
 import { toast } from 'react-hot-toast';
+import { Link, Navigate } from 'react-router-dom';
+import { handlePostRequest } from '../utils/api/axios';
+
+const Container = styled(Box)`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const style = {
+  alighItems: 'center',
+  gap: '2rem',
+  padding: '5rem',
+  background: '#fff',
+  borderRadius: '0.5rem',
+  boxShadow: 'rgba(0, 0, 0, 0.05) 0px 0px 0px 1px',
+};
 
 const SignUpPage = () => {
   const [email, setEmail] = useState('');
@@ -71,73 +85,71 @@ const SignUpPage = () => {
   if (isSigned) return <Navigate to="/login" />;
 
   return (
-    <OutLayout>
-      <PhotoPageLayout background={Bg}>
-        <Stack alignItems={'center'} width="100%" gap={2} component="form" onSubmit={handleSubmit}>
-          <Typography> Sign Up Page</Typography>
-          <TextField
-            placeholder="Username"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-              validateUsername(e.target.value);
-            }}
-            error={Boolean(usernameError)}
-            helperText={usernameError}
-            required
-            sx={{ width: '60%' }}
-          />
-          <TextField
-            placeholder="Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              validateEmail(e.target.value);
-            }}
-            error={Boolean(emailError)}
-            helperText={emailError}
-            required
-            sx={{ width: '60%' }}
-          />
-          <TextField
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              validatePassword(e.target.value);
-            }}
-            error={Boolean(passwordError)}
-            helperText={passwordError}
-            required
-            sx={{ width: '60%' }}
-          />
-          <TextField
-            placeholder="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-              validateConfirmPassword(e.target.value);
-            }}
-            error={Boolean(confirmPasswordError)}
-            helperText={confirmPasswordError}
-            required
-            sx={{ width: '60%' }}
-          />
-          <Stack flexDirection={'row'} gap="1rem">
-            <Button type="submit" variant="contained" sx={{ width: '8rem' }}>
-              Sign Up
+    <Container>
+      <Stack sx={{ ...style }} component="form" onSubmit={handleSubmit}>
+        <Typography> Sign Up Page</Typography>
+        <TextField
+          placeholder="Username"
+          value={username}
+          onChange={(e) => {
+            setUsername(e.target.value);
+            validateUsername(e.target.value);
+          }}
+          error={Boolean(usernameError)}
+          helperText={usernameError}
+          required
+          sx={{ width: '60%' }}
+        />
+        <TextField
+          placeholder="Email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            validateEmail(e.target.value);
+          }}
+          error={Boolean(emailError)}
+          helperText={emailError}
+          required
+          sx={{ width: '60%' }}
+        />
+        <TextField
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            validatePassword(e.target.value);
+          }}
+          error={Boolean(passwordError)}
+          helperText={passwordError}
+          required
+          sx={{ width: '60%' }}
+        />
+        <TextField
+          placeholder="Confirm Password"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            validateConfirmPassword(e.target.value);
+          }}
+          error={Boolean(confirmPasswordError)}
+          helperText={confirmPasswordError}
+          required
+          sx={{ width: '60%' }}
+        />
+        <Stack flexDirection={'row'} gap="1rem">
+          <Button type="submit" variant="contained" sx={{ width: '8rem' }}>
+            Sign Up
+          </Button>
+          <Link to="/login" style={{ all: 'unset' }}>
+            <Button variant="contained" sx={{ width: '8rem' }}>
+              Login
             </Button>
-            <Link to="/login" style={{ all: 'unset' }}>
-              <Button variant="contained" sx={{ width: '8rem' }}>
-                Login
-              </Button>
-            </Link>
-          </Stack>
+          </Link>
         </Stack>
-      </PhotoPageLayout>
-    </OutLayout>
+      </Stack>
+    </Container>
   );
 };
 

@@ -4,14 +4,7 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #3076ff;
-  background-image: url('./assets/images/background.jpg');
-  background-attachment: fixed;
-  background-size: cover;
+  background-color: #b5c2ca;
 }
 
 code {
@@ -37,4 +30,47 @@ code {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    'menu navbar'
+    'menu content';
+  grid-template-rows: 1fr 8fr;
+  grid-template-columns: 1fr 5fr;
+  height: 100vh;
+}
+
+.content {
+  grid-area: content;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 1rem;
+  overflow: auto;
+  background: #ffffff;
+  margin: 10px;
+}
+
+.navbar {
+  grid-area: navbar;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+}
+
+.menu {
+  grid-area: menu;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  color: #96959a;
+  display: grid;
+  grid-template-rows: 1fr 7fr 1fr;
 }

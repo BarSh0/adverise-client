@@ -4,7 +4,7 @@ import { Container } from '@mui/system';
 
 const StyledSocialAvatar = styled(Avatar)`
   border-radius: 1rem;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   :hover {
@@ -13,14 +13,11 @@ const StyledSocialAvatar = styled(Avatar)`
 `;
 
 const FilterBar = styled(Box)`
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
-  background: white;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
-  width: 80%;
-  position: fixed;
   gap: 1rem;
   align-items: center;
   z-index: 4;
@@ -32,5 +29,6 @@ const StyledContainer = styled(Container)`
   gap: 1rem;
   align-items: center;
 `;
+
 
 export { FilterBar, StyledContainer, StyledSocialAvatar };
