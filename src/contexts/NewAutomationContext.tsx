@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useEffect, useState } from 'react';
-import { amountOfHoursCalc } from '../utils/Utils';
-import { handlePostRequest } from '../utils/api/axios';
 import { useMutation, useQueryClient } from 'react-query';
+import { handlePostRequest } from '../utils/api/axios';
 
 export type NewAutomationContextType = {
   [key: string]: any;
@@ -33,7 +32,7 @@ type NewAutomationRequestType = {
     {
       id: string;
       name: string;
-    }
+    },
   ];
 };
 
@@ -70,6 +69,10 @@ export function NewAutomationProvider({ children }: any) {
       },
     }
   );
+
+  useEffect(() => {
+    console.log(newAutomation);
+  }, [newAutomation]);
 
   return (
     <NewAutomationContext.Provider

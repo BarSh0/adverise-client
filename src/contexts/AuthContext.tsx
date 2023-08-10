@@ -26,7 +26,6 @@ const AuthProvider = ({ children }: any) => {
     try {
       const { data, status } = await axiosInstance.get('/auth/refresh');
       if (status !== 200) {
-        console.log(data.message);
         localStorage.setItem('token', data.data);
         setIsAuthenticated(false);
       } else {

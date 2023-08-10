@@ -5,14 +5,15 @@ import { handleDeleteRequest } from '../../utils/api/axios';
 
 const DeleteAutomationBtn = (automation: IAutomation) => {
   const queryClient = useQueryClient();
-  const handleDelete = useMutation(() => handleDeleteRequest(`/automations/twitter/${automation._id}`), {
+
+  const handleDelete = useMutation(() => handleDeleteRequest(`/${automation.platform}/${automation._id}`), {
     onSuccess: (res) => {
-      console.log(res);
       queryClient.invalidateQueries('automations');
     },
   });
+
   return (
-    <Button variant="contained" color='error' onClick={() => handleDelete.mutate()}>
+    <Button variant="contained" color="error" onClick={() => handleDelete.mutate()}>
       Delete
     </Button>
   );

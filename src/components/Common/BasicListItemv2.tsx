@@ -3,7 +3,6 @@ import { DisableStackListItem, StackListItem } from './styles';
 
 export type ListItemProps = {
   name: string;
-  key: string;
   icon?: string;
   value?: any;
   isSelected?: boolean;
@@ -13,17 +12,7 @@ export type ListItemProps = {
   rightComponent?: any;
 };
 
-const ListItem = ({
-  name,
-  icon,
-  value,
-  isSelected,
-  select,
-  unSelect,
-  isDisabled,
-  rightComponent,
-  key,
-}: ListItemProps) => {
+const ListItem = ({ name, icon, value, isSelected, select, unSelect, isDisabled, rightComponent }: ListItemProps) => {
   const handleOnClick = () => {
     if (isSelected) {
       unSelect && unSelect(value);
@@ -33,7 +22,7 @@ const ListItem = ({
   };
   if (isDisabled)
     return (
-      <DisableStackListItem flexDirection={'row'} justifyContent={'space-between'} key={key}>
+      <DisableStackListItem flexDirection={'row'} justifyContent={'space-between'}>
         <Stack flexDirection={'row'} alignItems={'center'} gap={1}>
           <Avatar variant="rounded" src={icon} alt={name} sx={{ width: 30, height: 30 }} />
           <Typography>{name}</Typography>
@@ -44,7 +33,6 @@ const ListItem = ({
 
   return (
     <StackListItem
-      key={key}
       flexDirection={'row'}
       justifyContent={'space-between'}
       sx={{ outlineColor: isSelected ? '#1ecf2d' : '#ffffff', outlineWidth: 2, outlineStyle: 'solid' }}

@@ -2,19 +2,17 @@
 import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { useContext, useState } from 'react';
+import { styled } from '@mui/material/styles';
+import React, { useContext, useState } from 'react';
 import { AutomationCard, AutomationListItem, NewAutomationButton } from '../components/AutomationComponents';
 import SearchBar from '../components/SearchBar';
 import { IAutomation } from '../constants/types/automation.types';
 import AutomationsContext from '../contexts/AutomationsContext';
 import { NewAutomationProvider } from '../contexts/NewAutomationContext';
 import platforms from '../data/Platforms';
-import { FilterBar, StyledContainer, StyledSocialAvatar } from './styles';
-import React from 'react';
-import { styled } from '@mui/material/styles';
+import { FilterBar, StyledSocialAvatar } from './styles';
 
 const AutomationsPage = () => {
-  console.log('AutomationsPage rendered');
   const { automationsArray } = useContext(AutomationsContext);
   const [selectedPlatform, setSelectedPlatform] = useState<string[]>([]);
   const [filterList, setFilterList] = useState<string[]>([]);
@@ -51,16 +49,7 @@ const AutomationsPage = () => {
       ));
     } else if (displayOption === 'cards') {
       return filteredAutomations.map((automation: IAutomation) => (
-        <React.Fragment>
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-          <AutomationCard key={automation._id} {...automation} />
-        </React.Fragment>
+        <AutomationCard key={automation._id} {...automation} />
       ));
     }
     return null;
@@ -78,7 +67,7 @@ const AutomationsPage = () => {
           searchData={automationsArray.map((automation: IAutomation) => automation.page?.name || 'No Name')}
           setter={setFilterList}
         />
-        <Stack direction={'row'} gap={{ xs: 1, sm: 2, md: 3 }} justifyContent={'center'}>
+        <Stack direction={'row'} gap={{ xs: 0.5, sm: 1, md: 3 }} justifyContent={'center'}>
           {platforms.map((platform, index) => (
             <StyledSocialAvatar
               key={platform.name + index}

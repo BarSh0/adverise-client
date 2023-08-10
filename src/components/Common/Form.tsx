@@ -1,20 +1,9 @@
-import { Checkbox, FormControl, FormLabel, ListItemText, MenuItem, Select, Stack, TextField } from '@mui/material';
+import { Autocomplete, FormControl, FormLabel, MenuItem, Select, Stack, TextField } from '@mui/material';
 import { useContext } from 'react';
 import { useQuery } from 'react-query';
 import NewAutomationContext from '../../contexts/NewAutomationContext';
 import { handleGetRequest } from '../../utils/api/axios';
 import BasicList from './BasicListv2';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 
 const campaignFields = [
   {
@@ -84,13 +73,13 @@ const adGroupFields = [
 
 const Form = () => {
   const { newAutomation, insertValue } = useContext(NewAutomationContext);
-  const { data: fundingInstruments } = useQuery('twitter-funding-instruments', () =>
+  const { data: fundingInstruments, isLoading: loading1 } = useQuery('twitter-funding-instruments', () =>
     handleGetRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/funding-instruments`)
   );
-  const { data: audiences } = useQuery('twitter-audiences', () =>
+  const { data: audiences, isLoading: loading2 } = useQuery('twitter-audiences', () =>
     handleGetRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/audiences`)
   );
-  const { data: targetingCriteria } = useQuery('twitter-targeting-criteria', () =>
+  const { data: targetingCriteria, isLoading: loading3 } = useQuery('twitter-targeting-criteria', () =>
     handleGetRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/targeting-criteria`)
   );
 
@@ -98,12 +87,11 @@ const Form = () => {
     insertValue(event.target.name, event.target.value);
   };
 
-  const handleMultiSelectChange = (event: any) => {
-    const {
-      target: { value, name },
-    } = event;
-    insertValue(name, typeof value === 'string' ? value.split(',') : value);
+  const handleMultiSelectChange = (event: any, value: any, name: string) => {
+    insertValue(name, value);
   };
+
+  if (loading1 || loading2 || loading3) return <div>Loading...</div>;
 
   return (
     <Stack flexDirection={'row'} gap={'1rem'}>
@@ -133,7 +121,7 @@ const Form = () => {
             size="small"
             onChange={handleChange}
           >
-            {fundingInstruments?.data.map((fundingInstrument: any) => {
+            {fundingInstruments.map((fundingInstrument: any) => {
               return (
                 <MenuItem key={fundingInstrument.id} value={fundingInstrument.id}>
                   {fundingInstrument.description}
@@ -182,44 +170,35 @@ const Form = () => {
       <BasicList title="Audience" label="Audience">
         <FormControl>
           <FormLabel sx={{ marginBottom: '0.5rem' }}>Targeting Criteria</FormLabel>
-          <Select
-            name={'targetingValue'}
-            fullWidth
-            defaultValue={newAutomation['targetingValue'] || ''}
+          <Autocomplete
+            disablePortal
+            id="targetingValue"
+            aria-label="targetingValue"
+            loading={loading3}
+            options={targetingCriteria}
+            defaultValue={newAutomation['targetingValue'] || []}
             size="small"
-            onChange={handleChange}
-          >
-            {targetingCriteria?.data.map((option: any) => {
-              return (
-                <MenuItem key={option.id} value={option}>
-                  {option.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
+            renderInput={(params) => <TextField {...params} />}
+            getOptionLabel={(option: any) => option.name}
+            onChange={(event, value) => handleMultiSelectChange(event, value, 'targetingValue')}
+            fullWidth
+            multiple
+          />
         </FormControl>
         <FormControl>
           <FormLabel sx={{ marginBottom: '0.5rem' }}>Audiences</FormLabel>
-          <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            multiple
+          <Autocomplete
+            disablePortal
+            id="audiences"
+            loading={loading2}
+            options={audiences}
+            renderInput={(params) => <TextField {...params} />}
+            getOptionLabel={(option: any) => option.name}
+            onChange={(event, value) => handleMultiSelectChange(event, value, 'audiences')}
+            fullWidth
             size="small"
-            name="audiences"
-            value={newAutomation['audiences'] || []}
-            onChange={handleMultiSelectChange}
-            renderValue={(selected) => selected.join(', ')}
-            MenuProps={MenuProps}
-          >
-            {audiences?.data.map((audience: any) => (
-              <MenuItem key={audience.name} value={audience.name}>
-                <Checkbox
-                  checked={newAutomation['audiences'] ? newAutomation['audiences'].indexOf(audience.name) > -1 : false}
-                />
-                <ListItemText primary={audience.name} />
-              </MenuItem>
-            ))}
-          </Select>
+            multiple
+          />
         </FormControl>
       </BasicList>
     </Stack>

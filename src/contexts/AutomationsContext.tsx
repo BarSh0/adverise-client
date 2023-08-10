@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext } from 'react';
 import { MutationFunction, useMutation, useQuery, useQueryClient } from 'react-query';
 import { automationService } from '../services/automation.service';
 import { handleGetRequest } from '../utils/api/axios';
@@ -7,9 +7,12 @@ const AutomationsContext = createContext({} as any);
 
 export function AutomationsProvider({ children }: any) {
   const queryClient = useQueryClient();
-  const { data: automationsArray, error, isLoading } = useQuery('automations', () => handleGetRequest('/automations'),{
+  const {
+    data: automationsArray,
+    error,
+    isLoading,
+  } = useQuery('automations', () => handleGetRequest('/automations'), {
     refetchOnWindowFocus: false,
-    
   });
 
   const handleStatusChange: MutationFunction<void, [string, string, boolean]> = async (variables) => {
@@ -22,10 +25,6 @@ export function AutomationsProvider({ children }: any) {
       queryClient.invalidateQueries('automations');
     },
   });
-
-  useEffect(() => {
-    console.log(automationsArray);
-  }, [automationsArray]);
 
   const value = {
     changeStatus,

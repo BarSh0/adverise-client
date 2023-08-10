@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Secular One', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #b5c2ca;
@@ -37,7 +38,7 @@ code {
   grid-template-areas:
     'menu navbar'
     'menu content';
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: auto 8fr;
   grid-template-columns: 1fr 5fr;
   height: 100vh;
 }

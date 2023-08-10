@@ -12,8 +12,6 @@ import AutomationDialogContent from './AutomationDialogContent';
 import { SmallAvatar, StyledAvatar, StyledCard } from './styles';
 
 const AutomationCard = (automation: IAutomation) => {
-  console.log('AutomationCard rendered');
-  console.log(automation);
   const isActive = automation.status === 'ACTIVE';
   const isFailed = automation.status === 'FAILED';
   const backgroundColor = isFailed ? colors.red : isActive ? colors.green : '#fff';

@@ -10,8 +10,6 @@ const PlatformsFormList = () => {
   const { newAutomation, insertValue, removeValue } = useContext(NewAutomationContext);
   const { user } = useAuth();
 
-  console.log(user);
-
   return (
     <BasicList title="platforms" label="platform" bg>
       {platforms.map((platform, index) => {

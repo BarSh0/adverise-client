@@ -23,7 +23,6 @@ const PagesFormList = () => {
   const [accountsCache, setAccountsCache] = useState([] as any);
 
   useEffect(() => {
-    console.log(accountsCache);
     if (!newAutomation.adAccount) return;
     getAccounts(newAutomation.platform, newAutomation.adAccount);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,24 +34,14 @@ const PagesFormList = () => {
   const handleUnSelect = (account: any) => {
     removeValue('page', account);
   };
-
   const getAccounts = async (platform: string, adAccount: AdAccount) => {
-    console.log(accountsCache);
-
     const cachedData = accountsCache[adAccount.name];
     if (cachedData) {
-      console.log(`Using cached adAccounts data for ${adAccount}:`, cachedData);
       return cachedData;
     }
-
-    // Otherwise, fetch adAccounts data from server
     const id = adAccount.id;
     const data = await handleGetRequest(`/${platform}/${id}/accounts`);
-
-    console.log(`Fetched accounts data for ${adAccount}:`, data);
-
     if (!data) return;
-
     setAccountsCache({ ...accountsCache, [adAccount.name]: data });
   };
 
@@ -64,7 +53,7 @@ const PagesFormList = () => {
             accountsCache[newAutomation.adAccount.name].map((account: Account) => {
               return (
                 <BasicListItem
-                  key={account.user_id}
+                  key={account.name}
                   name={account.name}
                   isSelected={isEqual(newAutomation.page, account)}
                   icon={account.picture}

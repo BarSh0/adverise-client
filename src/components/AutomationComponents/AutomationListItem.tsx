@@ -14,7 +14,6 @@ import AutomationDialogContent from './AutomationDialogContent';
 import { timeUtils } from '../../utils/time.utils';
 
 const AutomationListItem = (automation: IAutomation) => {
-  console.log('AutomationCard rendered');
   const isActive = automation.status === 'ACTIVE';
   const isFailed = automation.status === 'FAILED';
   const backgroundColor = isFailed ? colors.red : isActive ? colors.green : '';

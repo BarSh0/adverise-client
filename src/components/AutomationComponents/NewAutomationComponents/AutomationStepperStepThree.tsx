@@ -6,7 +6,6 @@ import { SmallAvatar, StyledAvatar, StyledCard } from '../styles';
 
 const AutomationDialogStepThree = (setErrorMessage: any) => {
   const { newAutomation } = React.useContext(NewAutomationContext);
-  console.log(newAutomation);
   return (
     <Stack flexDirection={'row'} gap={2} justifyContent={'center'}>
       <StyledCard>

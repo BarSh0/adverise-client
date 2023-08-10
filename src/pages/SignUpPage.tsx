@@ -79,7 +79,6 @@ const SignUpPage = () => {
     if (status !== 200) {
       toast.error(message);
     }
-    console.log(data);
   };
 
   if (isSigned) return <Navigate to="/login" />;

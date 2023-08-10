@@ -19,13 +19,9 @@ const AdAccountsFormList = () => {
   const getAdAccounts = async (platform: string) => {
     const cachedData = adAccountsCache[platform];
     if (cachedData) {
-      console.log(`Using cached adAccounts data for ${platform}:`, cachedData);
       return cachedData;
     }
-
     const data = await handleGetRequest(`/${platform}/adaccounts`);
-    console.log(`Fetched adAccounts data for ${platform}:`, data);
-
     if (!data) {
       setNewAutomation({ ...newAutomation, platform: '' });
       return;
@@ -33,14 +29,10 @@ const AdAccountsFormList = () => {
     const dataWithPlatform = data.map((item: any) => {
       return { ...item, platform };
     });
-
     const updatedData = adAccounts.concat(dataWithPlatform);
     setAdAccounts(updatedData);
-    console.log(`Updated adAccounts data for ${platform}:`, updatedData);
-
     setAdAccountsCache({ ...adAccountsCache, [platform]: updatedData });
   };
-  console.log(adAccounts);
 
   const handleSelect = (account: any) => {
     insertValue('adAccount', account);

@@ -1,13 +1,13 @@
-import { Avatar, IconButton, ListItemIcon, Tooltip, Typography } from '@mui/material';
+import Logout from '@mui/icons-material/Logout';
+import Settings from '@mui/icons-material/Settings';
+import { Avatar, ListItemIcon, Tooltip, Typography } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { Stack } from '@mui/system';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Logout from '@mui/icons-material/Logout';
-import Settings from '@mui/icons-material/Settings';
-import Divider from '@mui/material/Divider';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import useAuth from '../../hooks/useAuth';
 
 const StyledLink = styled(Link)`
@@ -20,6 +20,7 @@ const UserStack = styled(Stack)`
   background: #f0f3f4;
   border-radius: 0.5rem;
   flex-direction: row !important;
+  padding: 0.5rem;
   align-items: center;
   gap: 2rem;
 `;
@@ -44,19 +45,16 @@ const UserAvatar = () => {
   return (
     <UserStack>
       <Tooltip title="User Profile" arrow>
-        <IconButton
+        <Avatar
           onClick={handleClick}
           aria-controls={open ? 'account-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
-        >
-          <Avatar
-            alt="Bar Shoshani"
-            src={user?.picture}
-            variant="rounded"
-            sx={{ width: 65, height: 65, borderRadius: '.5rem' }}
-          />
-        </IconButton>
+          alt="Bar Shoshani"
+          src={user?.picture}
+          variant="rounded"
+          sx={{ width: 65, height: 65, borderRadius: '.5rem', cursor: 'pointer' }}
+        />
       </Tooltip>
       <Menu
         anchorEl={anchorEl}
