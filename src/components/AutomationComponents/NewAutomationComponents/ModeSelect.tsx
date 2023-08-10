@@ -1,10 +1,9 @@
-import React from 'react';
-import { Stack } from '@mui/system';
-import { Box, Typography } from '@mui/material';
-import Card from '@mui/material/Card';
 import BoltIcon from '@mui/icons-material/Bolt';
-import { styled } from '@mui/material/styles';
 import BrightnessLowIcon from '@mui/icons-material/BrightnessLow';
+import { Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import { styled } from '@mui/material/styles';
+import { Stack } from '@mui/system';
 
 const StyledCard = styled(Card)`
   width: 10rem;
