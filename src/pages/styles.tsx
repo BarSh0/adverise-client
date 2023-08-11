@@ -17,7 +17,7 @@ const FilterBar = styled(Box)`
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 10px;
   gap: 1rem;
   align-items: center;
   z-index: 4;

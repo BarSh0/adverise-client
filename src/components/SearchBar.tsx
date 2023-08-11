@@ -25,6 +25,7 @@ const SearchBar = ({ searchData, setter }: { searchData: Array<string>; setter: 
         onInputChange={(event, value) => filterData(value)}
         fullWidth
         multiple
+        groupBy={(option) => option[0].toUpperCase()}
       />
     </Stack>
   );

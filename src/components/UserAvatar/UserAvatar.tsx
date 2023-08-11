@@ -17,7 +17,7 @@ const StyledLink = styled(Link)`
 `;
 
 const UserStack = styled(Stack)`
-  background: #f0f3f4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 0.5rem;
   flex-direction: row !important;
   padding: 0.5rem;
@@ -53,7 +53,7 @@ const UserAvatar = () => {
           alt="Bar Shoshani"
           src={user?.picture}
           variant="rounded"
-          sx={{ width: 65, height: 65, borderRadius: '.5rem', cursor: 'pointer' }}
+          sx={{ width: 50, height: 50, borderRadius: '.5rem', cursor: 'pointer' }}
         />
       </Tooltip>
       <Menu

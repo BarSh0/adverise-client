@@ -109,7 +109,7 @@ const AutomationsPage = () => {
 const AutomationsStack = styled(Stack)`
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   box-shadow: inset 0 5px 10px -10px black;
   background: linear-gradient(180deg, #3e3d4514 51.56%, rgba(0, 0, 0, 0) 100%);
   padding: 1rem;

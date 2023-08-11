@@ -38,40 +38,50 @@ code {
   grid-template-areas:
     'menu navbar'
     'menu content';
-  grid-template-rows: auto 8fr;
+  grid-template-rows: 1fr 8fr;
   grid-template-columns: 1fr 5fr;
   height: 100vh;
+
+  @media screen and (max-width: 700px) {
+    grid-template-areas:
+      'navbar'
+      'content';
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr;
+  }
 }
 
 .content {
   grid-area: content;
-  padding: 15px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-  border-radius: 1rem;
+  padding: 10px;
   overflow: auto;
   background: #ffffff;
-  margin: 10px;
 }
 
 .navbar {
   grid-area: navbar;
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   background-color: #ffffff;
-  border-radius: 1rem;
-  margin: 10px;
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+  border-bottom: rgba(0, 0, 0, 0.05) solid 1px;
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr 4fr 2fr;
+    gap: 0px;
+  }
 }
 
 .menu {
   grid-area: menu;
   background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   color: #96959a;
   display: grid;
-  grid-template-rows: 1fr 7fr 1fr;
+  border-right: rgba(0, 0, 0, 0.05) solid 1px;
+  grid-template-rows: 1fr 8fr;
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 }

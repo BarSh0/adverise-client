@@ -1,4 +1,5 @@
 const colors = {
+  main: '#768a96',
   green: '#1ecf2d',
   red: '#F44334',
   linearGreen: 'linear-gradient(180deg, #63B967 0%, #4BA64F 100%);',
