@@ -15,7 +15,7 @@ const IconsStack = styled(Stack)`
 `;
 
 const Navbar = () => {
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   return (
     <div className="navbar">
