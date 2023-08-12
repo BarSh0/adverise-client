@@ -2,10 +2,10 @@ import { Box, Button, Stack, Step, StepLabel, Stepper, Typography } from '@mui/m
 import React from 'react';
 import NewAutomationContext from '../../../contexts/NewAutomationContext';
 import LinearWithValueLabel from '../../Common/ProggressBar';
-import AutomationDialogStepOne from './AutomationStepperStepOne';
-import AutomationDialogStepThree from './AutomationStepperStepThree';
-import AutomationDialogStepTwo from './AutomationStepperStepTwo';
-import ModeSelect from './ModeSelect';
+import AutomationDialogStepOne from './Steps/StepOne';
+import AutomationDialogStepThree from './Steps/StepThree';
+import AutomationDialogStepTwo from './Steps/StepTwo';
+import ModeSelect from './Steps/ModeSelectStep';
 import styled from 'styled-components';
 import SimpleCreation from './SimpleCreation';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';

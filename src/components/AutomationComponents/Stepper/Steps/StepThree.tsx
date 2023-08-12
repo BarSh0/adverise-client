@@ -1,8 +1,8 @@
 import { Badge, Stack, Switch, Typography } from '@mui/material';
 import React from 'react';
-import NewAutomationContext from '../../../contexts/NewAutomationContext';
-import platforms from '../../../data/Platforms';
-import { SmallAvatar, StyledAvatar, StyledCard } from '../styles';
+import NewAutomationContext from '../../../../contexts/NewAutomationContext';
+import platforms from '../../../../data/Platforms';
+import { SmallAvatar, StyledAvatar, StyledCard } from '../../styles';
 
 const AutomationDialogStepThree = (setErrorMessage: any) => {
   const { newAutomation } = React.useContext(NewAutomationContext);

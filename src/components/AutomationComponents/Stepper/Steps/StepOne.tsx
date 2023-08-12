@@ -1,9 +1,9 @@
 import { Stack } from '@mui/material';
 import React, { useEffect } from 'react';
-import NewAutomationContext from '../../../contexts/NewAutomationContext';
-import AdAccountsFormList from '../../FormLists/AdAccountsFormList';
-import PagesFormList from '../../FormLists/PagesFormList';
-import PlatformsFormList from '../../FormLists/PlatformsFormList';
+import NewAutomationContext from '../../../../contexts/NewAutomationContext';
+import AdAccountsFormList from '../../../FormLists/AdAccountsFormList';
+import PagesFormList from '../../../FormLists/PagesFormList';
+import PlatformsFormList from '../../../FormLists/PlatformsFormList';
 
 export type AutomationDialogStepOneProps = {
   setErrorMessage: Function;
@@ -22,7 +22,7 @@ const AutomationDialogStepOne = ({ setErrorMessage }: AutomationDialogStepOnePro
       error = 'Please select a page';
     }
     setErrorMessage(error);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newAutomation]);
 
   return (

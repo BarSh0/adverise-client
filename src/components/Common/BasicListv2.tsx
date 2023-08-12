@@ -17,7 +17,7 @@ type BasicListProps = {
 };
 
 const BasicList = ({ title, label, items, isMultySelect, children, searcher, bg }: BasicListProps) => {
-  const [filteredItems, setFilteredItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState(items?.map((item: ListItemProps) => item.name) || []);
 
   const { newAutomation, insertValue, removeValue, insertMultipleValues, removeMultipleValues } =
     useContext(NewAutomationContext);
@@ -60,7 +60,7 @@ const BasicList = ({ title, label, items, isMultySelect, children, searcher, bg 
         {children}
       </StackList>
       {searcher && (
-        <SearchBar searchData={items ? items.map((item: ListItemProps) => item.name) : []} setter={setFilteredItems} />
+        <SearchBar searchData={items?.map((item: ListItemProps) => item.name) || []} setter={setFilteredItems} />
       )}
     </Stack>
   );

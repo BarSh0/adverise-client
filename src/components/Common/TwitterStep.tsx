@@ -71,7 +71,7 @@ const adGroupFields = [
   },
 ];
 
-const Form = () => {
+const TwitterStep = () => {
   const { newAutomation, insertValue } = useContext(NewAutomationContext);
   const { data: fundingInstruments, isLoading: loading1 } = useQuery('twitter-funding-instruments', () =>
     handleGetRequest(`/${newAutomation.platform}/${newAutomation.adAccount.id}/funding-instruments`)
@@ -205,4 +205,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default TwitterStep;

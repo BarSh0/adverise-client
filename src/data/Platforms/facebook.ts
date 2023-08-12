@@ -11,7 +11,7 @@ const facebookSettings = {
   url: 'https://www.facebook.com/',
   connect: connectToFacebook,
   disconnect: disconnectFromFacebook,
-  signIn: signInWithFacebook,
+  signIn: () => signInWithFacebook(),
 };
 
 export default facebookSettings;

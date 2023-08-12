@@ -38,7 +38,7 @@ code {
   grid-template-areas:
     'menu navbar'
     'menu content';
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: 1fr 10fr;
   grid-template-columns: 1fr 5fr;
   height: 100vh;
 
@@ -46,7 +46,7 @@ code {
     grid-template-areas:
       'navbar'
       'content';
-    grid-template-rows: 1fr 9fr;
+    grid-template-rows: 1fr 10fr;
     grid-template-columns: 1fr;
   }
 }
@@ -68,7 +68,7 @@ code {
   border-bottom: rgba(0, 0, 0, 0.05) solid 1px;
 
   @media screen and (max-width: 700px) {
-    grid-template-columns: 1fr 4fr 2fr;
+    grid-template-columns: auto 4fr auto;
     gap: 0px;
   }
 }
@@ -79,7 +79,7 @@ code {
   color: #96959a;
   display: grid;
   border-right: rgba(0, 0, 0, 0.05) solid 1px;
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: 1fr 10fr;
 
   @media screen and (max-width: 700px) {
     display: none;

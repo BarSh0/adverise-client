@@ -9,6 +9,7 @@ import LoginWithFacebook from '../components/LoginWith/LoginWithFacebook';
 import LoginWithGoogle from '../components/LoginWith/LoginWithGoogle';
 import LoginWithTwitter from '../components/LoginWith/LoginWithTwitter';
 import { handlePostRequest } from '../utils/api/axios';
+import platforms from '../data/Platforms';
 
 const Container = styled(Box)`
   height: 100vh;
@@ -37,6 +38,8 @@ const LoginPage = () => {
       queryClient.invalidateQueries('user');
     },
   });
+
+  const loginPlatforms = platforms.filter((platform: any) => platform.signIn);
 
   return (
     <Container>

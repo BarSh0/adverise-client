@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import { useState } from 'react';
 import Dialog from '../../Common/Dialog';
-import NewAutomationStepper from './NewAutomationStepper';
+import NewAutomationStepper from '../Stepper/NewAutomationStepper';
 import { NewAutomationCard, NewAutomationListItem } from '../styles';
 
 const NewAutomationButton = ({ diplayOpt }: any) => {

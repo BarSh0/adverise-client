@@ -26,7 +26,7 @@ const AudiencesFormList = () => {
           newAutomation.adAccount.saved_audiences?.data.map((audience: any, index: number) => {
             return (
               <BasicListItem
-                key={audience.name }
+                key={audience.name}
                 name={audience.name}
                 value={audience}
                 icon={audience.icon}

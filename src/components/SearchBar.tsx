@@ -5,6 +5,8 @@ const SearchBar = ({ searchData, setter }: { searchData: Array<string>; setter: 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [data, setData] = useState(searchData);
 
+  console.log(searchData);
+
   const filterData = (value: string) => {
     const filteredData = searchData.filter((item) => {
       return item.toLowerCase().includes(value.toLowerCase());

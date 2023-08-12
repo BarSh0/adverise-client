@@ -11,7 +11,7 @@ const twitterSettings = {
   url: 'https://www.twitter.com/',
   connect: connectToTwitter,
   disconnect: disconnectFromTwitter,
-  signIn: signInWithTwitter,
+  signIn: () => signInWithTwitter(),
 };
 
 export default twitterSettings;
