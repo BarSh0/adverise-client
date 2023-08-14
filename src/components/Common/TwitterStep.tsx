@@ -129,6 +129,16 @@ const TwitterStep = () => {
               );
             })}
           </Select>
+          {newAutomation['fundingInstrument'] && (
+            <p>
+              Currency Type:
+              {
+                fundingInstruments.find(
+                  (fundingInstrument: any) => fundingInstrument.id === newAutomation['fundingInstrument']
+                )?.currency
+              }
+            </p>
+          )}
         </FormControl>
       </BasicList>
       <BasicList title="Ad Group" label="adGroup">
